@@ -159,8 +159,8 @@ msgid "Toggle navigation"
 msgstr "Navigation"
 
 #: udata_gouvfr/theme/templates/header.html:18
-msgid "Open platform for french public data"
-msgstr "Plateforme ouverte des données publiques françaises"
+msgid "Open platform for luxembourgish public data"
+msgstr "Plateforme ouverte des données publiques luxembourgeoises"
 
 #: udata_gouvfr/theme/templates/header.html:74
 msgid "My profile"

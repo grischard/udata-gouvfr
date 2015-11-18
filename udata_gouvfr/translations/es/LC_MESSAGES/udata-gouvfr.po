@@ -157,7 +157,7 @@ msgstr "Navegador"
 
 #: udata_gouvfr/theme/templates/header.html:18
 msgid "Open platform for french public data"
-msgstr "Plataforma abierta para los datos públicos franceses "
+msgstr "Plataforma abierta para los datos públicos luxemburgueses"
 
 #: udata_gouvfr/theme/templates/header.html:74
 msgid "My profile"
