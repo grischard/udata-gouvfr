@@ -1,5 +1,69 @@
-<script src="https://www.geoportail.lu/static/js/govbar.js"></script>
-<section class="govbar govbar-light">
+<style type="text/css">
+    .govbar {
+    background: #fff;
+    border-bottom: 1px solid #cccaca;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    height: 46px;
+    width: 100%;
+    z-index: 30000
+    }
+    .govbar:after,.govbar:before {
+    content: '';
+    display: table
+    }
+    .govbar-logo {
+    border: 0;
+    float: left;
+    padding: 3px 8px
+    }
+    .govbar-logo.newwindow:after {
+    display: none
+    }
+    .govbar-logo img {
+    border: 0;
+    display: block;
+    height: 40px
+    }
+    .govbar-links {
+    float: right;
+    line-height: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0
+    }
+    .govbar-links li {
+    float: left
+    }
+    @media (max-width:44.99em) {.govbar-links {
+    display: none
+    }
+
+    }
+    .govbar-link {
+    float: left;
+    font-weight: 700;
+    padding: 8px
+    }
+    .govbar-link:active,.govbar-link:focus,.govbar-link:hover,.govbar-link:link,.govbar-link:visited {
+    border: 0;
+    color: #222!important;
+    text-decoration: none
+    }
+    .govbar-link:focus,.govbar-link:hover {
+    background: #e6e6e6!important
+    }
+    .govbar-more {
+    font-weight: 400
+    }
+</style>
+<section class="govbar">
+  <a href="http://gouvernement.lu" lang="fr" target="_blank" title="Gouvernement du Grand-Duché de Luxembourg - New window" class="govbar-logo newwindow">
+    <img srcset="//cdn.public.lu/pictures/logos/gov/gov-light.png 1x, //cdn.public.lu/pictures/logos/gov/gov-light-2x.png 2x" src="//cdn.public.lu/pictures/logos/gov/gov-light.png" alt="Gouvernement du Grand-Duché de Luxembourg">
+  </a>
+</section>
 <section class="header">
     <!--[if lte IE 8]>
     <div class="iewarning">
