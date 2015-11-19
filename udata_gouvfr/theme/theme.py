@@ -50,10 +50,10 @@ gouvfr_menu = nav.Bar('gouvfr_menu', [
         nav.Item('Dataconnexions', 'gouvfr.dataconnexions'),
     ]),
     # nav.Item('Dataconnexions', 'gouvfr.dataconnexions'),
-    nav.Item('luxembourg.lu', url='http://luxembourg.public.lu'),
-    nav.Item('guichet.lu', url='http://guichet.public.lu'),
-    nav.Item('gouvernement.lu', url='http://www.gouvernement.lu'),
-    nav.Item('Autres sites', url='http://www.etat.public.lu/'),
+    nav.Item('luxembourg.lu', 'luxembourg', url='http://luxembourg.public.lu'),
+    nav.Item('guichet.lu', 'guichet', url='http://guichet.public.lu'),
+    nav.Item('gouvernement.lu', 'gouvernement', url='http://www.gouvernement.lu'),
+    nav.Item('Autres sites', 'autressites', url='http://www.etat.public.lu/'),
 ])
 
 theme.menu(gouvfr_menu)
