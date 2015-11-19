@@ -51,8 +51,10 @@ gouvfr_menu = nav.Bar('gouvfr_menu', [
         nav.Item('Dataconnexions', 'gouvfr.dataconnexions'),
     ]),
     # nav.Item('Dataconnexions', 'gouvfr.dataconnexions'),
-    nav.Item('Etalab', 'etalab', url='http://www.etalab.gouv.fr/'),
-    nav.Item('CADA', 'cada', url='http://cada.data.gouv.fr/'),
+    nav.Item('luxembourg.lu', url='http://luxembourg.public.lu'),
+    nav.Item('guichet.lu', url='http://guichet.public.lu'),
+    nav.Item('gouvernement.lu', url='http://www.gouvernement.lu'),
+    nav.Item('Autres sites', url='http://www.etat.public.lu/'),
 ])
 
 theme.menu(gouvfr_menu)
@@ -68,13 +70,12 @@ nav.Bar('gouvfr_footer', [
 ])
 
 NETWORK_LINKS = [
-    ('Gouvernement.fr', 'http://www.gouvernement.fr'),
-    ('France.fr', 'http://www.france.fr'),
-    ('Legifrance.gouv.fr', 'http://www.legifrance.gouv.fr'),
-    ('Service-public.fr', 'http://www.service-public.fr'),
-    ('Opendata France', 'http://opendatafrance.net'),
-    ('CADA.fr', 'http://www.cada.fr'),
-    ('Etalab.gouv.fr', 'http://www.etalab.gouv.fr'),
+    ('luxembourg.lu', 'http://luxembourg.public.lu'),
+    ('guichet.lu', 'http://guichet.public.lu'),
+    ('gouvernement.lu', 'http://www.gouvernement.lu'),
+    ('Legilux', 'http://eli.legilux.public.lu/'),
+    ('geoportail', 'https://www.geoportail.lu/en/'),
+    ('Autres sites', 'http://www.etat.public.lu/'),
 ]
 
 nav.Bar(
