@@ -50,8 +50,13 @@
                 <a href="https://fb.me/etalab" title="Facebook">
                     <span class="fa fa-facebook-square"></span>
                 </a>
-                <a href="https://plus.google.com/117902389749487955734" title="Google+">
-                    <span class="fa fa-google-plus-square"></span>
+            </li>
+            <li class="nav-item">
+                <a href="m&#x61;ilto:{{ config.CONTACT_EMAIL|obfuscate|safe }}">
+	                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+	                    <use xlink:href="#icon-email" x="0" y="0" />
+	                </svg>
+	                <span>{{ config.CONTACT_EMAIL|obfuscate|safe }}</span>
                 </a>
                 <a href="https://github.com/etalab" title="github">
                     <span class="fa fa-github-square"></span>
