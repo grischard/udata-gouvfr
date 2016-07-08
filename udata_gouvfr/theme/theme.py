@@ -26,6 +26,8 @@ gouvfr_menu = nav.Bar('gouvfr_menu', [
         nav.Item(_('As a producer'), 'gouvfr.faq', {'section': 'producer'}),
         nav.Item(_('As a reuser'), 'gouvfr.faq', {'section': 'reuser'}),
         nav.Item(_('As a developer'), 'gouvfr.faq', {'section': 'developer'}),
+        nav.Item(_('As a system integrator'), 'gouvfr.faq',
+                 {'section': 'system-integrator'}),
     ]),
     nav.Item(_('Data'), 'datasets.list', items=[
         nav.Item(_('Datasets'), 'datasets.list'),
@@ -45,9 +47,14 @@ nav.Bar('gouvfr_footer', [
     nav.Item(_('As a producer'), 'gouvfr.faq', {'section': 'producer'}),
     nav.Item(_('As a reuser'), 'gouvfr.faq', {'section': 'reuser'}),
     nav.Item(_('As a developer'), 'gouvfr.faq', {'section': 'developer'}),
+<<<<<<< HEAD
     ])
 
 nav.Bar('gouvfr_footer_support', [
+=======
+    nav.Item(_('As a system integrator'), 'gouvfr.faq',
+             {'section': 'system-integrator'}),
+>>>>>>> 792038c9d07f637fa994925a6a9e440c23327180
     nav.Item(_('API'), 'apidoc.swaggerui'),
     nav.Item(_('Credits'), 'gouvfr.credits'),
     nav.Item(_('Usage Guidelines for Open Data'), 'gouvfr.usage'),
