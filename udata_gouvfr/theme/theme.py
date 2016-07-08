@@ -26,8 +26,6 @@ gouvfr_menu = nav.Bar('gouvfr_menu', [
         nav.Item(_('As a producer'), 'gouvfr.faq', {'section': 'producer'}),
         nav.Item(_('As a reuser'), 'gouvfr.faq', {'section': 'reuser'}),
         nav.Item(_('As a developer'), 'gouvfr.faq', {'section': 'developer'}),
-        nav.Item(_('As a system integrator'), 'gouvfr.faq',
-                 {'section': 'system-integrator'}),
     ]),
     nav.Item(_('Data'), 'datasets.list', items=[
         nav.Item(_('Datasets'), 'datasets.list'),
@@ -54,20 +52,6 @@ nav.Bar('gouvfr_footer_support', [
     nav.Item(_('Usage Guidelines for Open Data'), 'gouvfr.usage'),
     nav.Item(_('Terms of use'), 'gouvfr.terms'),
 ])
-
-NETWORK_LINKS = [
-    ('luxembourg.lu', 'http://luxembourg.public.lu'),
-    ('guichet.lu', 'http://guichet.public.lu'),
-    ('gouvernement.lu', 'http://www.gouvernement.lu'),
-    ('Legilux', 'http://eli.legilux.public.lu/'),
-    ('geoportail', 'https://www.geoportail.lu/en/'),
-    ('Autres sites', 'http://www.etat.public.lu/'),
-]
-
-nav.Bar(
-    'gouvfr_network',
-    [nav.Item(label, label, url=url) for label, url in NETWORK_LINKS]
-)
 
 
 @cache.memoize(50)
@@ -99,83 +83,8 @@ def get_blog_post(lang):
     return blogpost
 
 
-@cache.cached(50)
-def get_discourse_posts():
-    base_url = current_app.config.get('DISCOURSE_URL')
-    category_id = current_app.config.get('DISCOURSE_CATEGORY_ID')
-    listing = current_app.config.get('DISCOURSE_LISTING_TYPE', 'latest')
-    limit = current_app.config.get('DISCOURSE_LISTING_LIMIT', 5)
-    if not base_url:
-        return
-
-    # Fetch site wide configuration (including all categories labels)
-    site_url = '{url}/site.json'.format(url=base_url)
-    try:
-        response = requests.get(site_url)
-    except requests.exceptions.RequestException:
-        log.exception('Unable to fetch discourses categories')
-        return
-    data = response.json()
-
-    # Resolve categories names
-    categories = {}
-    for category in data['categories']:
-        categories[category['id']] = category['name']
-
-    # Fetch last topic from selected category (if any)
-    pattern = '{url}/l/{listing}.json?limit={limit}'
-    if category_id:
-        pattern = '{url}/c/{category}/l/{listing}.json?limit={limit}'
-        # return topics
-    url = pattern.format(url=base_url,
-                         category=category_id,
-                         listing=listing,
-                         limit=limit)
-    try:
-        response = requests.get(url)
-    except requests.exceptions.RequestException:
-        log.exception('Unable to fetch discourses topics')
-        return
-    data = response.json()
-
-    # Resolve posters avatars
-    users = {}
-    for user in data['users']:
-        users[user['id']] = {
-            'id': user['id'],
-            'name': user['username'],
-            'avatar_url': '{0}{1}'.format(base_url, user['avatar_template'])
-        }
-
-    # Parse topics
-    topics = []
-    topic_pattern = '{url}/t/{slug}/{id}'
-    for topic in data['topic_list']['topics']:
-        last_posted = topic['last_posted_at']
-        last_posted = parse(last_posted) if last_posted else None
-        topics.append({
-            'id': topic['id'],
-            'title': topic['title'],
-            'fancy_title': topic['fancy_title'],
-            'slug': topic['slug'],
-            'url': topic_pattern.format(url=base_url, **topic),
-            'category': categories[topic['category_id']],
-            'posts': topic['posts_count'],
-            'replies': topic['reply_count'],
-            'likes': topic['like_count'],
-            'views': topic['views'],
-            'created_at': parse(topic['created_at']),
-            'last_posted_at': last_posted,
-            'posters': [
-                users[u['user_id']] for u in topic['posters']
-            ]
-        })
-
-    return topics
-
 
 @theme.context('home')
 def home_context(context):
     context['blogpost'] = get_blog_post(g.lang_code)
-    context['forum_topics'] = get_discourse_posts()
     return context
