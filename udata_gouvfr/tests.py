@@ -5,14 +5,16 @@ import json
 
 from flask import url_for
 
+from udata.frontend.markdown import md
 from udata.models import Badge, PUBLIC_SERVICE
 from udata.tests import TestCase, DBTestMixin
 from udata.tests.api import APITestCase
 from udata.tests.factories import (
     DatasetFactory, ReuseFactory, OrganizationFactory,
-    VisibleReuseFactory, GeoZoneFactory
+    VisibleReuseFactory, GeoZoneFactory, LicenseFactory
 )
 from udata.tests.frontend import FrontTestCase
+from udata.tests.test_sitemap import SitemapTestCase
 from udata.settings import Testing
 
 from .models import (
@@ -92,8 +94,8 @@ class GouvFrThemeTest(FrontTestCase):
         '''It should render the organization page'''
         org = OrganizationFactory()
         datasets = [DatasetFactory(organization=org) for _ in range(3)]
-        reuses = [ReuseFactory(organization=org, datasets=[d])
-                  for d in datasets]
+        for dataset in datasets:
+            ReuseFactory(organization=org, datasets=[dataset])
 
         response = self.get(url_for('organizations.show', org=org))
         self.assert200(response)
@@ -189,6 +191,12 @@ class SpecificUrlsTest(FrontTestCase):
         self.assert200(response)
         self.assert_template_used('faq/developer.html')
 
+    def test_third_party_faq(self):
+        response = self.client.get(
+            url_for('gouvfr.faq', section='system-integrator'))
+        self.assert200(response)
+        self.assert_template_used('faq/system-integrator.html')
+
     def test_terms(self):
         response = self.client.get(url_for('gouvfr.terms'))
         self.assert200(response)
@@ -248,17 +256,25 @@ class TerritoriesSettings(GouvFrSettings):
 class TerritoriesTest(FrontTestCase):
     settings = TerritoriesSettings
 
-    def test_basic(self):
+    def test_with_gouvfr_territory_datasets(self):
+        bdr = GeoZoneFactory(
+            id='fr/county/13', level='fr/county', name='Bouches-du-Rhône')
         arles = GeoZoneFactory(
-            id='fr/town/13004', level='fr/town',
+            id='fr/town/13004', level='fr/town', parents=[bdr.id],
             name='Arles', code='13004', population=52439)
         response = self.client.get(
             url_for('territories.territory', territory=arles))
         self.assert200(response)
-        self.assertIn('Arles', response.data.decode('utf-8'))
-        self.assertIn(
-            '<div data-udata-territory-id="fr-town-13004-emploi_chiffres"',
-            response.data.decode('utf-8'))
+        data = response.data.decode('utf-8')
+        self.assertIn('Arles', data)
+        territory_datasets = self.get_context_variable('territory_datasets')
+        self.assertEqual(len(territory_datasets), 10)
+        for dataset in territory_datasets:
+            self.assertIn(
+                '<div data-udata-territory-id="{dataset.slug}"'.format(
+                    dataset=dataset),
+                data)
+        self.assertIn(bdr.name, data)
 
 
 class OEmbedsTerritoryAPITest(APITestCase):
@@ -269,6 +285,8 @@ class OEmbedsTerritoryAPITest(APITestCase):
         arles = GeoZoneFactory(
             id='fr/town/13004', level='fr/town',
             name='Arles', code='13004', population=52439)
+        licence_ouverte = LicenseFactory(id='fr-lo', title='Licence Ouverte')
+        LicenseFactory(id='notspecified', title='Not Specified')
         for territory_dataset_class in TERRITORY_DATASETS.values():
             organization = OrganizationFactory(
                 id=territory_dataset_class.organization_id)
@@ -288,7 +306,20 @@ class OEmbedsTerritoryAPITest(APITestCase):
             self.assertIn(cgi.escape(territory.url), data['html'])
             self.assertIn(
                 'alt="{name}"'.format(name=organization.name), data['html'])
-            self.assertIn(territory.description.split('\n')[0], data['html'])
+            self.assertIn(
+                md(territory.description, source_tooltip=True), data['html'])
+            self.assertIn('Download from localhost', data['html'])
+            self.assertIn('Add to your own website', data['html'])
+            if territory_dataset_class != TERRITORY_DATASETS['comptes']:
+                self.assertIn(
+                    'License: {title}'.format(title=licence_ouverte.title),
+                    data['html'])
+                self.assertIn(
+                    '© {license_id}'.format(license_id=licence_ouverte.id),
+                    data['html'])
+                self.assertIn(
+                    '<a data-tooltip="Source" href="http://localhost/datasets',
+                    data['html'])
 
 
 class SitemapTest(FrontTestCase):
@@ -305,9 +336,25 @@ class SitemapTest(FrontTestCase):
             url_for('gouvfr.redevances_redirect', _external=True),
             url_for('gouvfr.faq_redirect', _external=True),
         ]
-        for section in ('citizen', 'producer', 'reuser', 'developer'):
+        for section in ('citizen', 'producer', 'reuser', 'developer',
+                        'system-integrator'):
             urls.append(url_for('gouvfr.faq_redirect',
-                                section='citizen', _external=True))
+                                section=section, _external=True))
 
         for url in urls:
             self.assertIn('<loc>{url}</loc>'.format(url=url), response.data)
+
+
+class SitemapTerritoriesTest(SitemapTestCase):
+    settings = TerritoriesSettings
+
+    def test_towns_within_sitemap(self):
+        '''It should return the town from the sitemap.'''
+        territory = GeoZoneFactory(
+            id='fr/town/13004', name='Arles', code='13004', level='fr/town')
+
+        self.get_sitemap_tree()
+
+        url = self.get_by_url('territories.territory', territory=territory)
+        self.assertIsNotNone(url)
+        self.assert_url(url, 0.5, 'weekly')

@@ -8,9 +8,7 @@ from udata.models import Reuse, Organization, Dataset
 from udata.i18n import I18nBlueprint
 from udata.sitemap import sitemap
 
-from .models import (
-    DATACONNEXIONS_5_CANDIDATE, DATACONNEXIONS_6_CANDIDATE, C3, NECMERGITUR
-)
+from .models import DATACONNEXIONS_5_CANDIDATE, C3, NECMERGITUR
 
 blueprint = I18nBlueprint('gouvfr', __name__,
                           template_folder='templates',
@@ -174,10 +172,26 @@ def terms():
     return theme.render('terms.html')
 
 
+@blueprint.route('/usage/')
+def usage():
+    return theme.render('usage.html')
+
+
+@blueprint.route('/browserconfig.xml')
+def browserconfig():
+    return theme.render('browserconfig.xml')
+
+
+@blueprint.route('/manifest.json')
+def manifest():
+    return theme.render('manifest.json')
+
+
 @sitemap.register_generator
 def gouvfr_sitemap_urls():
     yield 'gouvfr.faq_redirect', {}, None, 'weekly', 1
-    for section in ('citizen', 'producer', 'reuser', 'developer'):
+    for section in ('citizen', 'producer', 'reuser', 'developer',
+                    'system-integrator'):
         yield 'gouvfr.faq_redirect', {'section': section}, None, 'weekly', 0.7
     yield 'gouvfr.dataconnexions_redirect', {}, None, 'monthly', 0.4
     yield 'gouvfr.redevances_redirect', {}, None, 'yearly', 0.4
