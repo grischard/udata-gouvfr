@@ -1,8 +1,4 @@
-{% if organization.public_service %}
-<img src="{{ theme_static('img/certified-stamp.png')}}" alt="certified"
-    class="certified" data-toggle="popover"
-    data-title="{{ _('Certified public service') }}"
-    data-content="{{ _('The identity of this public service public is certified') }}"
-    data-container="body" data-placement="left" data-trigger="hover"/>
-{% endif %}
+{% from theme('macros/certified.html') import badge_if_certified with context %}
+{{ badge_if_certified(organization) }}
 {% include 'organization/sidebar-producer.html' %}
+
