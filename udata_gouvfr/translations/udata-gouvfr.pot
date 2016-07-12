@@ -9,12 +9,18 @@ msgstr ""
 "Project-Id-Version: udata-gouvfr 0.9.0.dev0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 "POT-Creation-Date: 2016-12-07 09:56+0100\n"
 ||||||| merged common ancestors
 "POT-Creation-Date: 2016-03-14 17:25+0100\n"
 =======
 "POT-Creation-Date: 2016-06-01 14:54+0200\n"
 >>>>>>> miscellaneous changes to theme
+||||||| merged common ancestors
+"POT-Creation-Date: 2016-07-08 16:09+0200\n"
+=======
+"POT-Creation-Date: 2016-07-12 16:00+0200\n"
+>>>>>>> update of translations
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +63,7 @@ msgstr ""
 msgid "Nec Mergitur"
 msgstr ""
 
+<<<<<<< HEAD
 #: udata_gouvfr/templates/c3.html:138 udata_gouvfr/templates/nec_mergitur.html:80
 #: udata_gouvfr/templates/openfield16.html:190
 #, python-format
@@ -72,6 +79,22 @@ msgstr ""
 msgid "terms"
 msgstr ""
 
+||||||| merged common ancestors
+#: udata_gouvfr/templates/c3.html:138 udata_gouvfr/templates/nec_mergitur.html:80
+#, python-format
+msgid "See the %(nb)s datasets"
+msgstr ""
+
+#: udata_gouvfr/templates/terms.html:4 udata_gouvfr/templates/terms.html:5
+msgid "Terms"
+msgstr ""
+
+#: udata_gouvfr/templates/terms.html:7
+msgid "terms"
+msgstr ""
+
+=======
+>>>>>>> update of translations
 #: udata_gouvfr/templates/faq/citizen.html:4
 msgid "Découvrir l’OpenData en tant que citoyen - FAQ"
 msgstr ""
@@ -105,6 +128,7 @@ msgstr ""
 msgid "Découvrir l’OpenData en tant qu’intégrateur - FAQ"
 msgstr ""
 
+<<<<<<< HEAD
 ||||||| merged common ancestors
 #: udata_gouvfr/templates/terms.html:4 udata_gouvfr/templates/terms.html:5
 msgid "Terms"
@@ -116,6 +140,10 @@ msgstr ""
 
 =======
 >>>>>>> miscellaneous changes to theme
+||||||| merged common ancestors
+>>>>>>> 01210d154fd4471678f25ae16931f4867bbe0ccd
+=======
+>>>>>>> update of translations
 #: udata_gouvfr/theme/theme.py:24
 msgid "Discover OpenData"
 msgstr ""
@@ -156,15 +184,42 @@ msgstr ""
 #: udata_gouvfr/theme/theme.py:28 udata_gouvfr/theme/theme.py:53
 =======
 #: udata_gouvfr/theme/theme.py:28 udata_gouvfr/theme/theme.py:47
+<<<<<<< HEAD
 >>>>>>> miscellaneous changes to theme
+||||||| merged common ancestors
+#: udata_gouvfr/theme/theme.py:25 udata_gouvfr/theme/theme.py:52
+msgid "As a citizen"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:26 udata_gouvfr/theme/theme.py:53
+msgid "As a producer"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:27 udata_gouvfr/theme/theme.py:54
+msgid "As a reuser"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:28 udata_gouvfr/theme/theme.py:55
+=======
+>>>>>>> update of translations
 msgid "As a developer"
 msgstr ""
 
+<<<<<<< HEAD
 #: udata_gouvfr/theme/theme.py:29 udata_gouvfr/theme/theme.py:57
 msgid "As a system integrator"
 msgstr ""
 
 #: udata_gouvfr/theme/theme.py:32
+||||||| merged common ancestors
+#: udata_gouvfr/theme/theme.py:29 udata_gouvfr/theme/theme.py:56
+msgid "As a system integrator"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:32
+=======
+#: udata_gouvfr/theme/theme.py:30
+>>>>>>> update of translations
 msgid "Data"
 msgstr ""
 
@@ -184,8 +239,14 @@ msgstr ""
 #: udata_gouvfr/theme/theme.py:32 udata_gouvfr/theme/templates/footer.html:67
 =======
 #: udata_gouvfr/theme/theme.py:32 udata_gouvfr/theme/templates/footer.html:74
+<<<<<<< HEAD
 #: udata_gouvfr/theme/templates/dataset/card.html:49
 >>>>>>> miscellaneous changes to theme
+||||||| merged common ancestors
+#: udata_gouvfr/theme/templates/dataset/card.html:49
+=======
+#: udata_gouvfr/theme/templates/dataset/card.html:44
+>>>>>>> update of translations
 msgid "Reuses"
 msgstr ""
 
@@ -195,15 +256,28 @@ msgstr ""
 #: udata_gouvfr/theme/theme.py:33 udata_gouvfr/theme/templates/header.html:78
 =======
 #: udata_gouvfr/theme/theme.py:33 udata_gouvfr/theme/templates/header.html:58
+<<<<<<< HEAD
 >>>>>>> miscellaneous changes to theme
+||||||| merged common ancestors
+#: udata_gouvfr/theme/theme.py:33 udata_gouvfr/theme/templates/footer.html:66
+msgid "Datasets"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:34 udata_gouvfr/theme/templates/footer.html:67
+msgid "Reuses"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:35 udata_gouvfr/theme/templates/header.html:78
+=======
+>>>>>>> update of translations
 msgid "Organizations"
 msgstr ""
 
-#: udata_gouvfr/theme/theme.py:37
+#: udata_gouvfr/theme/theme.py:35
 msgid "Dashboard"
 msgstr ""
 
-#: udata_gouvfr/theme/theme.py:38
+#: udata_gouvfr/theme/theme.py:36
 msgid "Events"
 msgstr ""
 
@@ -223,6 +297,7 @@ msgstr ""
 #: udata_gouvfr/theme/theme.py:55
 =======
 #: udata_gouvfr/theme/theme.py:52
+<<<<<<< HEAD
 >>>>>>> miscellaneous changes to theme
 msgid "Credits"
 msgstr ""
@@ -233,11 +308,33 @@ msgstr ""
 #: udata_gouvfr/theme/theme.py:56
 =======
 #: udata_gouvfr/theme/theme.py:53
+||||||| merged common ancestors
+msgid "Credits"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:53
+=======
+>>>>>>> update of translations
 msgid "Usage Guidelines for Open Data"
 msgstr ""
 
+<<<<<<< HEAD
 #: udata_gouvfr/theme/theme.py:54
 >>>>>>> miscellaneous changes to theme
+||||||| merged common ancestors
+#: udata_gouvfr/theme/theme.py:54
+#: udata_gouvfr/theme/theme.py:58
+msgid "API"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:59
+msgid "Credits"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:60
+=======
+#: udata_gouvfr/theme/theme.py:53
+>>>>>>> update of translations
 msgid "Terms of use"
 msgstr ""
 
@@ -245,6 +342,7 @@ msgstr ""
 msgid "Open Data Guide"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: udata_gouvfr/theme/templates/footer.html:24
 #: udata_gouvfr/theme/templates/subnav-small.html:40
@@ -257,6 +355,16 @@ msgid "Topics"
 #: udata_gouvfr/theme/templates/footer.html:34
 msgid "Contact"
 >>>>>>> miscellaneous changes to theme
+||||||| merged common ancestors
+#: udata_gouvfr/theme/templates/footer.html:34
+msgid "Contact"
+#: udata_gouvfr/theme/templates/footer.html:24
+#: udata_gouvfr/theme/templates/subnav-small.html:40
+msgid "Topics"
+=======
+#: udata_gouvfr/theme/templates/footer.html:34
+msgid "Contact"
+>>>>>>> update of translations
 msgstr ""
 
 #: udata_gouvfr/theme/templates/footer.html:36
@@ -411,6 +519,7 @@ msgid "Likes"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: udata_gouvfr/theme/templates/subnav-large.html:20
 #: udata_gouvfr/theme/templates/subnav-small.html:14
 #: udata_gouvfr/theme/templates/topic/subnav.html:19
@@ -426,6 +535,23 @@ msgid "Recent datasets"
 >>>>>>> miscellaneous changes to theme
 msgstr ""
 
+||||||| merged common ancestors
+#: udata_gouvfr/theme/templates/raw.html:24
+msgid "Recent datasets"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/subnav-large.html:20
+#: udata_gouvfr/theme/templates/subnav-small.html:14
+#: udata_gouvfr/theme/templates/topic/subnav.html:19
+msgid "Search"
+msgstr ""
+
+=======
+#: udata_gouvfr/theme/templates/raw.html:24
+msgid "Recent datasets"
+msgstr ""
+
+>>>>>>> update of translations
 #: udata_gouvfr/theme/templates/raw.html:28
 msgid "Recent reuses"
 msgstr ""
@@ -464,34 +590,26 @@ msgstr ""
 msgid "terms"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/dataset/card.html:13
-#: udata_gouvfr/theme/templates/organization/sidebar-producer.html:4
-msgid "Certified public service"
-msgstr ""
-
-#: udata_gouvfr/theme/templates/dataset/card.html:14
-msgid "The identity of this public service is certified"
-msgstr ""
-
-#: udata_gouvfr/theme/templates/dataset/card.html:39
+#: udata_gouvfr/theme/templates/dataset/card.html:34
 msgid "Territorial coverage"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/dataset/card.html:57
+#: udata_gouvfr/theme/templates/dataset/card.html:52
 #: udata_gouvfr/theme/templates/reuse/card.html:51
 msgid "Stars"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/dataset/card.html:69
+#: udata_gouvfr/theme/templates/dataset/card.html:64
 msgid "Temporal coverage"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/dataset/card.html:81
+#: udata_gouvfr/theme/templates/dataset/card.html:76
 msgid "Territorial coverage granularity"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/dataset/card.html:93
+#: udata_gouvfr/theme/templates/dataset/card.html:88
 msgid "Frequency"
+<<<<<<< HEAD
 >>>>>>> miscellaneous changes to theme
 msgstr ""
 
@@ -501,6 +619,25 @@ msgstr ""
 
 #: udata_gouvfr/theme/templates/subnav-small.html:11
 msgid "Search in this town"
+||||||| merged common ancestors
+
+#: udata_gouvfr/theme/templates/subnav-large.html:43
+#: udata_gouvfr/theme/templates/subnav-large.html:46
+#: udata_gouvfr/theme/templates/subnav-small.html:58
+#: udata_gouvfr/theme/templates/subnav-small.html:61
+#: udata_gouvfr/theme/templates/topic/subnav.html:50
+#: udata_gouvfr/theme/templates/topic/subnav.html:53
+msgid "Contribute!"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/subnav-small.html:8
+msgid "Search in datasets"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/subnav-small.html:11
+msgid "Search in this town"
+=======
+>>>>>>> update of translations
 msgstr ""
 
 #: udata_gouvfr/theme/templates/dataset/display.html:3
@@ -534,10 +671,6 @@ msgstr ""
 #: udata_gouvfr/theme/templates/mail/base.html:93
 #, python-format
 msgid "The %(site)s team"
-msgstr ""
-
-#: udata_gouvfr/theme/templates/organization/sidebar-producer.html:5
-msgid "The identity of this public service public is certified"
 msgstr ""
 
 #: udata_gouvfr/theme/templates/reuse/card.html:34
