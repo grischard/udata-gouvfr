@@ -1,8 +1,8 @@
 {
   "name": "udata-gouvfr",
   "version": "0.1.0",
-  "description": "Open Data Portal - French customization",
-  "author": "Axel Haustant",
+  "description": "data.public.lu - Luxembourg customization",
+  "author": "Patrick Weber",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
