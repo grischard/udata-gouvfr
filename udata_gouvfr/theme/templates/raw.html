@@ -64,9 +64,9 @@
 
     <script src="{{ static('common.js') }}"></script>
     <script src="{{ static('site.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="{{ url_for('gouvfr.static', filename='ctie/main.js') }}"></script>
     {% block extra_js %}{% endblock %}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="{{ url_for('gouvfr.static', filename='ctie/main.js') }}"></script>
     {% for snippet in footer_snippets %}
     {{ snippet()|safe }}
     {% endfor %}
